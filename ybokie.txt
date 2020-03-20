@@ -1,0 +1,2473 @@
+﻿REPORT YBOKIE NO STANDARD PAGE HEADING line-SIZE 255.
+*WRITE: 'HelloWorld'.
+
+*DATA tmp TYPE i.
+*tmp = 1.
+*WRITE tmp.
+
+
+*WRITE: 'Hello','World'.
+*WRITE: 'omg'.
+*WRITE: 'NEXT'.
+
+*DATA num1 TYPE i.
+*DATA char2 TYPE c.
+
+*DATA: num1 TYPE i,char2 TYPE c.
+*DATA: num3 TYPE i.
+
+*DATA: char TYPE c.
+*char = 'Hello'.
+*DATA char2 TYPE c.
+*char2 = char.
+*WRITE: char,char2.
+
+*
+*DATA text1 TYPE string.
+*DATA: date1 TYPE d.
+*DATA date2 TYPE d.
+*DATA num1 type n.
+*DATA int1 type i.
+*
+*date1 = sy-datum + 1.
+*
+*text1 = date1.
+*
+*date2 = text1.
+*
+*num1 = date2.
+*date2 = num1.
+*
+*int1 = '01012018'.
+*
+*date1 = int1.
+*
+*WRITE: date1,text1,date2,num1.
+
+
+*DATA text1 TYPE string VALUE 'Hello'.
+*DATA text2 TYPE string VALUE 'World'.
+*
+*WRITE: text1,text2.
+
+*DATA date1 TYPE d.
+*date1 = '20180101'.
+*date1 = date1 + 1.
+*WRITE date1.
+*
+*WRITE:'Date: '.
+*WRITE: sy-datum.
+*WRITE: 35 'Customers Listing'.
+*WRITE: 65 'Time: '.
+*WRITE: sy-uzeit.
+*ULINE: /1(80).
+*FORMAT COLOR 4.
+*WRITE: / sy-vline,'Customers ID',20 sy-vline,'Name',55 sy-vline,'City',80 sy-vline.
+*ULINE: /(80).
+
+*DATA wa LIKE customers.
+*wa-id = 1.
+*wa-name = 'John'.
+*wa-postcode = '10270'.
+*WRITE: wa-id,wa-name,wa-postcode.
+
+*TYPES: BEGIN OF st_cust,
+*         id   LIKE customers-id,
+*         name LIKE customers-name,
+*       END OF st_cust.
+*DATA wa1 TYPE st_cust.
+*DATA wa2 TYPE st_cust.
+*
+*wa1-id = 1.
+*wa1-name = 'John'.
+*wa2-id = 2.
+*wa2-name = 'Sara'.
+*WRITE: wa1-id,wa1-name,/ wa2-id,wa2-name.
+
+
+*TYPES: BEGIN OF stuct1,
+*  id TYPE string,
+*  name TYPE string,
+*  decimal TYPE p,
+*  END OF stuct1.
+*
+*DATA dat1 TYPE stuct1.
+*dat1-id = 'a10010'.
+*dat1-name = 'bokie'.
+*dat1-decimal = '10.02'.
+*
+*WRITE: dat1-id,dat1-name,dat1-decimal.
+
+
+*assign DATA by MOVE 1,2,3 field
+*DATA BEGIN OF wa.
+*DATA id LIKE customers-id.
+*DATA name(25) TYPE c.
+*DATA city LIKE customers-city VALUE 'Bangkok'.
+*DATA END OF wa.
+*MOVE: 20 TO wa-id,'john' to wa-name.
+*write: wa-id,wa-name,wa-city.
+
+
+
+*assign DATA by INCLUDE all field in table
+*default type c
+
+
+
+*data begin of wa.
+*  include structure customers.
+* data country(15).
+* data end of wa.
+*
+*move: 10 to wa-id,'nuchanart' to wa-name,'tokyo' to wa-city,'x' to wa-custtype,10 to wa-discount,'japan' to wa-country.
+*
+*write: wa-id,wa-name,wa-city,wa-country,wa-custtype,wa-discount.
+
+
+*DATA: name(4) VALUE 'Test',
+*      num TYPE i value 10.
+*      FIELD-SYMBOLS <temp>.
+*
+*ASSIGN name to <temp>. "name.
+*WRITE <temp>.
+*ASSIGN num to <temp>. "<temp> = num.
+*WRITE <temp>.
+*
+*
+
+*DATA decimal TYPE p DECIMALS 2.
+*decimal = '2.22' + '2.33'.
+*WRITE:(50) decimal.
+*
+*WRITE: sy-vline.
+*FORMAT COLOR 4.
+*WRITE: 'ProductID'.
+*WRITE: sy-vline.
+*FORMAT COLOR 3.
+*WRITE: 'Product Name'.
+*FORMAT COLOR 4.
+*SKIP.
+*WRITE: / sy-vline, 13 sy-vline,sy-linno.
+*
+*ULINE.
+
+*SKIP. WRITE: 'Hello World',sy-linno.
+*SKIP. WRITE: 'Test1'. SKIP 5.
+*WRITE: 'Test2'. SKIP TO LINE 20. WRITE 'This is line 20'.
+
+*DATA text TYPE string.
+*DATA b TYPE string.
+*MOVE 'DAT1' to: text , b.
+*
+*ULINE (20).
+*WRITE:/ sy-vline.
+*WRITE: 8 text COLOR 7.
+*WRITE: 20 sy-vline.
+*ULINE:/(20).
+*
+*
+*
+*WRITE:/ sy-vline.
+*WRITE: 8 b COLOR 7.
+*WRITE: 20 sy-vline.
+*ULINE:/(20).
+*
+*
+*TYPES type_cus_id like customers-id.
+*
+*DATA cusid type type_cus_id.
+*MOVE 9090 to cusid.
+*WRITE: cusid.
+*
+*DATA BEGIN OF stuct.
+*  DATA id like customers-id.
+*  DATA name(25) TYPE c.
+*DATA END OF stuct.
+*
+*MOVE: 9 to stuct-id.
+*stuct-name = 'hello world'.
+*SKIP.
+*ULINE.
+*WRITE: stuct-id,stuct-name.
+*
+*DATA cus_like1 LIKE customers.
+*cus_like1-id = 1122.
+*
+*WRITE:cus_like1-id.
+
+
+*NO-ZERO Split 00000 first digit
+*type N collect (EMP_No)
+
+*DATA: number(10) TYPE n VALUE 90.
+*WRITE:number,number NO-ZERO.
+*
+*DATA BEGIN OF struct.
+*  DATA decimal TYPE p.
+*  DATA: v TYPE i VALUE -1.
+*  DATA END OF struct.
+*
+*
+*WRITE: struct-v,struct-v no-SIGN.
+*
+*
+* ULINE.
+* WRITE 'No grouping'.
+* DATA: v1 TYPE i VALUE 120000.
+* WRITE: v1,v1 NO-GROUPING.
+* SKIP.
+*
+* ULINE.
+*WRITE: 'Decimals'.
+*DATA: v2 TYPE p DECIMALS 4 VALUE '1234.5678'.
+*WRITE:v2,v2 DECIMALS 2.
+*ULINE.
+*SKIP.
+*
+*WRITE:'Formating Options',/ 'LEFT for numberic' ,/ 'RIGHT for character'.
+*DATA tmp(20) VALUE 'TEST'.
+*SKIP.
+*WRITE: tmp  ,/ tmp CENTERED, / tmp RIGHT-JUSTIFIED.
+*SKIP.
+*DATA text TYPE i VALUE 90.
+*WRITE: text,/ text CENTERED, / text LEFT-JUSTIFIED.
+*
+*SKIP.
+*DATA txt_str TYPE string VALUE 'SAP'.
+*WRITE txt_str CENTERED.
+*WRITE /(10) txt_str CENTERED.
+*
+*
+*ULINE.
+*SKIP.
+*
+*WRITE: 'Flow Control'.
+*WRITE: / 'IF Statement'.
+*SKIP.
+** sy-mandt check user = 100
+*WRITE: sy-mandt.
+*
+*IF sy-mandt = '100'.
+*  WRITE: / 'This is Production Client'.
+*ELSEIF sy-mandt = '800' or sy-mandt = '805'.
+*  WRITE: / 'This is Traing Client'.
+*  WRITE / sy-mandt.
+*ElSE.
+*  WRITE: / 'This is Test Client'.
+*ENDIF.
+*
+*
+*CASE sy-mandt.
+*        WHEN '100'.
+*          WRITE: / 'This is Production Client'.
+*        WHEN '805'.
+*          WRITE: / 'This is Traing Client'.
+*        WHEN OTHERS.
+*          WRITE: / 'This is Test Client'.
+*ENDCASE.
+*
+*
+*ULINE.
+*SKIP.
+*WRITE: 'Do Statement'.
+*DO 3 TIMES.
+*  WRITE: / sy-index, 'Hello World'.
+*ENDDO.
+*
+*
+*DO.
+*  IF sy-index = 5.
+*
+*  ENDIF.
+*  WRITE: sy-index,'Hello world',/.
+*  IF sy-index = 5.
+*    EXIT.
+*  ENDIF.
+*ENDDO.
+*
+*WHILE sy-index <> 6.
+*  WRITE: / sy-index, 'HelloWorld'.
+*ENDWHILE.
+*
+*DATA count TYPE i VALUE 1.
+*WHILE count <> 6.
+*  WRITE: / sy-index, 'Hello world'.
+*  count = count + 1.
+*ENDWHILE.
+*
+*ULINE.
+*SKIP.
+*WRITE 'Arthmetic Oprators'.
+*
+*DATA: a1(5),a2,a3,a4 TYPE i.
+*a1 = 9 / 2.
+*a2 = 9 div 2.
+*a3 = 9 mod 2.
+*a4 = 2 ** 4.
+*WRITE: / a1,a2,a3,a4.
+*
+** /OSE11 View Data Table.
+** SFLIGHT.
+*ULINE.
+*SKIP.
+*
+*TABLES SPFLI.
+*SELECT * from spfli.
+*  WRITE: / spfli-carrid , spfli-connid,spfli-cityfrom.
+*ENDSELECT.
+
+
+
+
+
+
+*
+*ULINE (20).
+*WRITE: /'INBLOCK'.
+*SKIP.
+*
+*DATA BEGIN OF include_struct.
+*  INCLUDE STRUCTURE customers.
+*DATA END OF include_struct.
+*
+*WRITE: include_struct-mandt.
+*
+
+*TYPES: BEGIN OF local_struct,
+*  id TYPE i,
+*  name type string,
+*  END OF local_struct.
+*
+*DATA st_loc TYPE local_struct.
+*st_loc-id = '101001'.
+
+*DATA: name(4) VALUE 'Test',num TYPE i VALUE 10.
+*
+*DATA: n(3) VALUE 123.
+*
+*FIELD-SYMBOLS <temp>.
+*ASSIGN name to <temp>.
+*<temp> = 456.
+*MOVE 789 to <temp>.
+*
+*IF <temp> EQ 789.
+*  WRITE 'SEN'.
+*ELSEIF <temp> = 456.
+*  WRITE 'FFS'.
+*ENDIF.
+*
+*NEW-LINE.
+*WRITE sy-mandt.
+*NEW-LINE.
+*WRITE: sy-datum CENTERED, ' = Date'.
+*NEW-LINE.
+
+
+*ULINE: /1(45).
+*FORMAT COLOR 1.
+*WRITE:/1 sy-vline,'Column#1',15 sy-vline,'Column#2'  COLOR 3, 30 sy-vline,'Column#3', 45 sy-vline.
+*ULINE /(45).
+*
+*NEW-LINE.
+*DATA de(5) TYPE p.
+*de = '1.12'.
+*WRITE: de DECIMALS 3.
+
+*ULINE: /1(26).
+*WRITE:/ sy-vline,'sy-datum',13 sy-vline,sy-datum,26 sy-vline.
+*ULINE: /1(26).
+
+
+*DATA dat1 TYPE String.
+*DATA len TYPE i VALUE 5.
+*
+*
+*DO len TIMES.
+*  ULINE: /1(26).
+*  WRITE:/ sy-vline,'sy-datum',13 sy-vline,sy-datum,26 sy-vline.
+*  ULINE: /1(26).
+*ENDDO.
+*
+*DATA: BEGIN OF IT1 OCCURS 10,
+*VAR1 TYPE I,
+*END OF IT1.
+*
+*
+*IT1-VAR1 = 10.
+*APPEND IT1.
+*
+*IT1-VAR1 = 20.
+*APPEND IT1.
+*
+*IT1-VAR1 = 30.
+*APPEND IT1.
+*
+*
+*LOOP AT IT1.
+*WRITE:/ IT1-VAR1 COLOR 5.
+*ENDLOOP.
+
+*ULINE: /1(26).
+*WRITE:/ sy-vline,'sy-datum',13 sy-vline,sy-datum,26 sy-vline.
+*ULINE: /1(26).
+*
+*ULINE: /1(26).
+*WRITE:/ sy-vline,'sy-mandt',13 sy-vline,sy-mandt,26 sy-vline.
+*ULINE: /1(26).
+*
+*ULINE: /1(26).
+*WRITE:/ sy-vline,'sy-uzeit',13 sy-vline,sy-uzeit,26 sy-vline.
+*ULINE: /1(26).
+*
+*ULINE: /1(26).
+*WRITE:/ sy-vline,'sy-langu',13 sy-vline,sy-langu,26 sy-vline.
+*ULINE: /1(26).
+*
+*ULINE: /1(26).
+*WRITE:/ sy-vline,'sy-uname',13 sy-vline,sy-uname,26 sy-vline.
+*ULINE: /1(26).
+*
+*ULINE: /1(26).
+*WRITE:/ sy-vline,'sy-repid',13 sy-vline,sy-repid,26 sy-vline.
+*ULINE: /1(26).
+*
+*
+*ULINE: /1(26).
+*WRITE:/ sy-vline,'sy-subrc',13 sy-vline,sy-subrc,26 sy-vline.
+*ULINE: /1(26).
+*
+*SKIP.
+*
+*WRITE: 'hello' LEFT-JUSTIFIED , 'world' RIGHT-JUSTIFIED.
+
+*
+*DATA lan TYPE string.
+*lan = sy-langu.
+*IF lan = 'E'.
+*  WRITE 'Language login is ENG'.
+*ELSE.
+*  WRITE 'Language logon in '.
+*  WRITE sy-langu.
+*ENDIF.
+*
+*DATA day TYPE string.
+*day = sy-datum.
+*WRITE day.
+*day = sy-datum+4(4).
+*WRITE day.
+*
+*IF day = '1205' or day = '1210' or day = '1231'.
+*  WRITE: 'is Holiday in December'.
+*ELSE.
+*  WRITE: 'day is weekdays'.
+*ENDIF.
+
+*
+*DATA sum TYPE i VALUE 0.
+*DO 10 TIMES.
+*  sum = sum + sy-index.
+*ENDDO.
+*WRITE sum.
+
+*
+*DATA odd TYPE i VALUE 0.
+*DATA count TYPE i VALUE 2.
+*
+*DO.
+*  IF count > 10.
+*    EXIT.
+*  ENDIF.
+*  odd = odd + count.
+*  count = count + 2.
+*ENDDO.
+*WRITE odd.
+*
+*DATA count TYPE i VALUE is INITIAL.
+*DO 100 TIMES.
+*  count = count + 1.
+*  IF count mod 10 = 0.
+*    WRITE: 'OUT!!!'.
+*    NEW-LINE.
+*    ELSE.
+*      WRITE count.
+*  ENDIF.
+*ENDDO.
+
+
+*
+*DATA a TYPE n VALUE 5.
+*DATA b TYPE n VALUE 2.
+*DATA v1 TYPE n.
+*v1 = a + b.
+*DATA v2 TYPE n.
+*v2 = a - b.
+*DATA v3 TYPE i.
+*v3 = a * b.
+*DATA v4 TYPE p DECIMALS 2.
+*v4 = a / b.
+*DATA v5 TYPE i.
+*v5 = a ** b.
+*
+*
+*WRITE: 'addition:',20 v1,/'Subtactio',20 v2,/'Muliplica',11 v3,/'Division:',6 v4,/'Power:' ,11 v5.
+*
+*DATA num TYPE i VALUE 1.
+*DATA tmp TYPE string.
+*tmp = num.
+*
+*CONCATENATE tmp ',' into tmp.
+*CONCATENATE tmp '2' into tmp.
+*CONCATENATE tmp '3' INTO tmp.
+*WRITE: tmp.
+*
+*
+*types : BEGIN OF flight_booking,
+*       id like scustom-id,
+*       name like scustom-name,
+*       city like scustom-city,
+*       discount like scustom-discount,
+*       end OF flight_booking.
+*
+*
+*data c1 type  flight_booking.
+*data c2 type  flight_booking.
+*data c3 type  flight_booking.
+*c1-id = 1.
+*c1-name = 'SAP AG'.
+*c1-city = 'Walldorf'.
+*c1-discount = 10.
+*
+*c2-id = 12.
+*c2-name = 'Microsoft'.
+*c2-city = 'Sydney'.
+*c2-discount = 10.
+*
+*c3-id = 27.
+*c3-name = 'Oracle'.
+*c3-city = 'New York'.
+*c3-discount = 15.
+*write:/'Flight Customer' , 100 'Date : ',sy-datum.
+*uline:/1(120).
+*format color 2.
+*write : /1 sy-vline,15 'ID' CENTERED  ,30 sy-vline,43 'Name' CENTERED,60 sy-vline,73'City' CENTERED,90 sy-vline,102'Discount' CENTERED,120 sy-vline.
+*FORMAT color off.
+*uline:/1(120).
+*write : /1 sy-vline,c1-id,30 sy-vline,c1-name,60 sy-vline,c1-city,90 sy-vline,c1-discount no-ZERO,120 sy-vline.
+*uline:/1(120).
+*write : /1 sy-vline,c2-id,30 sy-vline,c2-name,60 sy-vline,c2-city,90 sy-vline,c2-discount no-ZERO,120 sy-vline.
+*uline:/1(120).
+*write : /1 sy-vline,c3-id,30 sy-vline,c3-name,60 sy-vline,c3-city,90 sy-vline,c3-discount no-ZERO,120 sy-vline.
+*uline:/1(120).
+*
+*data: date type string ,day TYPE string ,month type string ,year(4) type i.
+*  date = sy-datum.
+*  day = date+6(2).
+*  month = date+4(2).
+*  year = date(4).
+*  year = year + 543.
+*  CONCATENATE day ',' INTO day.
+*  CASE month .
+*    WHEN '1'.
+*      WRITE:'January',day,year NO-GROUPING.
+*      WHEN '2'.
+*      WRITE:'February',day,year NO-GROUPING.
+*      WHEN '3'.
+*      WRITE:'March',day,year NO-GROUPING.
+*      WHEN '4'.
+*      WRITE:'April',day,year NO-GROUPING.
+*      WHEN '5'.
+*      WRITE:'May',day,year NO-GROUPING.
+*      WHEN '6'.
+*      WRITE:'June',day,year NO-GROUPING.
+*      WHEN '7'.
+*      WRITE:'July',day,year NO-GROUPING.
+*      WHEN '8'.
+*      WRITE:'August',day,year NO-GROUPING.
+*      WHEN '9'.
+*      WRITE:'September',day, year NO-GROUPING.
+*      WHEN '10'.
+*      WRITE:'October',day,year NO-GROUPING.
+*      WHEN '11'.
+*      WRITE:'November',day,year NO-GROUPING.
+*      WHEN '12'.
+*      WRITE:'December',day,year NO-GROUPING.
+*  ENDCASE.
+
+*TABLES customers.
+*SELECT * FROM customers.
+*  WRITE:/ customers-id, customers-name.
+*ENDSELECT.
+*
+*WRITE:/ '------------------------------'.
+*
+*DATA struct LIKE customers.
+*SELECT * INTO struct from customers.
+*  WRITE:/ struct-id.
+*ENDSELECT.
+*
+*SKIP.
+*
+*DATA scustom LIKE customers.
+*SELECT * INTO scustom FROM customers.
+*  WRITE:/ scustom-id,scustom-name.
+*ENDSELECT.
+
+*
+*TABLES spfli.
+*SELECT * FROM spfli.
+*  WRITE:/ spfli-carrid,spfli-connid,spfli-cityfrom,spfli-cityto.
+*ENDSELECT.
+
+
+*DATA sflight LIKE sflight.
+*SELECT * INTO sflight FROM sflight.
+*  WRITE:/ sflight-carrid,sflight-connid,sflight-fldate,sflight-price.
+*ENDSELECT.
+
+*
+*TABLES trbat.
+*SELECT * FROM trbat.
+*  WRITE:/ trbat-function.
+*ENDSELECT.
+*
+*IF sy-subrc <> 0.
+*  WRITE:/ 'No data was found!!!!'.
+*ENDIF.
+
+*
+*
+*WRITE: 'Date: ',sy-datum,50 'Customers Listing',90 'Time: ',sy-uzeit.
+*uline /(110).
+*FORMAT COLOR 1.
+*WRITE:/ sy-vline,'Customer ID',30 sy-vline,'Name',70 sy-vline,'City',110 sy-vline.
+*uline /(110).
+*FORMAT COLOR 2  INTENSIFIED off.
+*TABLES customers.
+*SELECT * FROM customers.
+*
+*  WRITE:/ sy-vline,customers-id,30 sy-vline,customers-name,70 sy-vline,customers-city,110 sy-vline.
+*ENDSELECT.
+*IF sy-subrc <> 0.
+*  WRITE / 'No data was found'.
+*ENDIF.
+*uline /(110).
+*
+*TABLES customers.
+*SELECT * FROM customers
+*  WHERE city = 'Bangkok'.
+*  WRITE:/ customers-id,customers-name.
+*ENDSELECT.
+*
+*IF  sy-subrc <> 0.
+*  WRITE:/ 'No data not found'.
+*ENDIF.
+
+
+*
+*TABLES customers.
+*SELECT * FROM customers
+*  WHERE city = 'Bangkok'.
+*  WRITE:/ customers-id,customers-name.
+*ENDSELECT.
+*
+*IF  sy-subrc <> 0.
+*  WRITE:/ 'No data not found'.
+*ENDIF.
+
+
+
+*TABLES spfli.
+*SELECT * FROM spfli
+*  WHERE carrid = 'LH' and cityfrom = 'FRANKFURT'.
+*  WRITE:/ spfli-carrid,spfli-connid,spfli-cityfrom,spfli-cityto.
+*ENDSELECT.
+*
+*IF  sy-subrc <> 0.
+*  WRITE:/ 'No data not found'.
+*ENDIF.
+
+*TABLES sflight.
+*SELECT * FROM sflight
+*  WHERE price BETWEEN 100 and 1000.
+*  WRITE:/ sfligh.
+*ENDSELECT.
+*
+*IF  sy-subrc <> 0.
+*  WRITE:/ 'No data not found'.
+*ENDIF.
+
+*Where ciry in ('','').
+*where
+
+*TABLES customers.
+*SELECT * FROM customers
+*  where name LIKE 'J%'.
+*  WRITE:/ customers-id,customers-name.
+*ENDSELECT.
+
+
+*DATA: BEGIN OF wa,
+*  id   LIKE customers-id,
+*  name LIKE customers-name,
+*  city LIKE customers-city,
+*END OF wa.
+*
+*SELECT id name city
+*  INTO wa
+*  FROM customers.
+*  WRITE:/ wa-id,wa-name,wa-city.
+*ENDSELECT.
+
+
+*WRITE: 'Date: ',sy-datum,50 'Customers Listing',90 'Time: ',sy-uzeit.
+*uline /(110).
+*FORMAT COLOR 1.
+*WRITE:/ sy-vline,'Customer ID',30 sy-vline,'Name',70 sy-vline,'City',110 sy-vline.
+*uline /(110).
+*FORMAT COLOR 2  INTENSIFIED off.
+*
+*DATA: BEGIN OF customers,
+*  id   LIKE customers-id,
+*  name LIKE customers-name,
+*  city LIKE customers-city,
+*END OF customers.
+*
+*SELECT id name city
+*  INTO customers
+*  FROM customers.
+*  WRITE:/ sy-vline,customers-id,30 sy-vline,customers-name,70 sy-vline,customers-city,110 sy-vline.
+*
+*ENDSELECT.
+*
+*IF sy-subrc <> 0.
+*  WRITE / 'No data was found'.
+*ENDIF.
+*uline /(110).
+
+*12.27.18
+*
+*TABLES BKPF.
+*SELECT * FROM BKPF.
+*  WRITE:/ bkpf-belnr,bkpf-gjahr.
+*ENDSELECT.
+
+*
+*DATA: BEGIN OF wa,
+*  belnr LIKE bkpf-belnr,
+*  gjahr LIKE bkpf-gjahr,
+*END OF wa.
+*SELECT belnr gjahr
+*  INTO wa FROM bkpf ORDER BY gjahr DESCENDING.
+*  WRITE:/ wa-belnr,wa-gjahr.
+*ENDSELECT.
+
+
+*DATA:BEGIN OF customer,
+*  id LIKE customers-id,
+*  name LIKE customers-name,
+*  city LIKE customers-city,
+*END OF customer.
+*
+*SELECT id name city INTO customer FROM customers.
+*WRITE:/ customer-id,customer-name,customer-city.
+*ENDSELECT.
+*IF sy-subrc <> 0.
+*WRITE:/ 'No data was found'.
+*ENDIF.
+*
+*DATA name LIKE customers-name.
+*SELECT name INTO name FROM customers.
+*ENDSELECT.
+*
+*WRITE:/ name.
+
+*DATA airline LIKE scarr-carrid.
+*SELECT carrid INTO airline FROM scarr.
+*  WRITE:/ airline.
+*ENDSELECT.
+
+*TABLES customers.
+*SELECT SINGLE *
+*FROM customers
+*WHERE id = 2.
+*IF sy-subrc = 0.
+*
+*WRITE:/ customers-id,customers-name,
+*customers-city,customers-discount.
+*
+*ELSE.
+*WRITE:/ 'Data was not found'.
+*ENDIF.
+
+
+*
+*DATA: BEGIN OF customers,
+*  id LIKE customers-id,
+*  name LIKE customers-name,
+*  city LIKE customers-city,
+*  discount LIKE customers-discount,
+*END OF customers.
+*SELECT SINGLE id name city discount
+*  INTO customers FROM customers
+*  WHERE id = 3.
+*
+*IF sy-subrc = 0.
+*  WRITE:/ customers-id,customers-name,customers-city,customers-discount.
+*ELSE.
+*  WRITE:/ 'Data was not found'.
+*ENDIF.
+
+
+*DATA:BEGIN OF scarr,
+*  carrid LIKE scarr-carrid,
+*  carrname LIKE scarr-carrname,
+*END OF scarr.
+*SELECT SINGLE carrid carrname INTO scarr FROM scarr
+*  WHERE carrid = 'LH'.
+*IF sy-subrc = 0.
+*  WRITE:/ scarr-carrid,scarr-carrname.
+*ELSE.
+*  WRITE:/ 'Data was not found'.
+*ENDIF.
+*
+*DATA: num TYPE i,
+*min LIKE sflight-price,
+*max LIKE sflight-price,
+*avg LIKE sflight-price,
+*sum LIKE sflight-price.
+*SELECT COUNT( * ) MIN( price ) MAX( price ) AVG( price )
+*SUM( price )
+*INTO (num,min,max,avg,sum)
+*FROM sflight.
+*WRITE: num,min,max,avg,sum.
+
+*
+*DATA: BEGIN OF wa,
+*num TYPE i,
+*min LIKE sflight-price,
+*max LIKE sflight-price,
+*avg LIKE sflight-price,
+*sum LIKE sflight-price,
+*END OF wa.
+*
+*SELECT COUNT( * ) MIN( price ) MAX( price ) AVG( price )
+*SUM( price )
+*INTO wa
+*FROM sflight.
+*WRITE: wa-num,wa-min,wa-max,wa-avg,wa-sum.
+*
+* - - - - - 5 Iner join - - - - - -
+*
+*FORMAT COLOR 1.
+*WRITE:/ sy-vline,'Airline Code',18 sy-vline,'Connection Number',50 sy-vline,'Fight Date',68 sy-vline,'Arrival City',86 sy-vline,'Airfare',110 sy-vline.
+*
+*TABLES: spfli,sflight.
+*SELECT spfli~carrid spfli~connid spfli~cityto sflight~fldate sflight~price
+*  INTO (spfli-carrid,spfli-connid,spfli-cityto,sflight-fldate,sflight-price)
+*  FROM spfli INNER JOIN sflight on spfli~carrid = sflight~carrid AND spfli~connid = sflight~connid
+*  WHERE spfli~carrid = 'LH'.
+*
+*  WRITE:/ spfli-carrid,spfli-connid,sflight-fldate,spfli-cityto,sflight-price.
+*ENDSELECT.
+
+
+
+*-----------------------
+*TABLES: scarr,sflight.
+*SELECT scarr~carrid scarr~carrname sflight~connid sflight~fldate
+*  INTO (scarr-carrid,scarr-carrname,sflight-connid,sflight-fldate)
+*  FROM scarr INNER JOIN sflight
+*  ON scarr~carrid = sflight~carrid.
+*  WRITE:/ scarr-carrid,scarr-carrname,sflight-connid,sflight-fldate.
+*  ENDSELECT.
+*
+
+"----------- mid note- ----
+*DATA: tmp1 TYPE i,tmp2 TYPE c.
+*tmp1 = 1.
+*tmp2 = 'A'.
+*WRITE: tmp1,tmp2.
+*move: 2 to tmp1,'B' to tmp2.
+*compute tmp1 = 3.
+*WRITE: tmp1,tmp2.
+
+" Basic structure
+*data begin of struct1.
+*  data id like customers-id.
+*  data name(25) type c.
+*DATA end of struct1.
+*
+*struct1-id = '5'.
+*struct1-name = 'john'.
+*WRITE: struct1-id,struct1-name.
+*
+" Include Struct
+*data begin of struct1.
+*  include structure customers.
+*  data dat1(15) type c.
+*data end of struct1.
+*
+*data tmp like struct1.
+*tmp-name = 'sora'.
+*move: 'yui' to tmp-name,'shiro' to tmp-dat1,
+*'101' to tmp-id.
+*WRITE: tmp-name,tmp-dat1,tmp-id.
+*
+*
+*data begin of struct1.
+*  data customer like customers.
+*  data tmp type i.
+*data end of struct1.
+*
+**is not call field in table must use include structure
+*move '101' to struct1-customer-id.
+*WRITE: struct1-id.
+
+*data customer LIKE customers.
+*customer-id = '11'.
+
+*types: begin of struct1,tmp1 type i,cus like customers,
+*  end of struct1.
+*
+*
+*data wa1 type struct1.
+*wa1-tmp1 = '1'.
+*wa1-cus-id = '101'.
+*
+*WRITE: wa1-tmp1,wa1-cus-id.
+*
+
+*
+*data begin of struct1.
+*  data cus like customers.
+*data end of struct1.
+*
+*struct1-cus-id = '101'.
+*
+*write struct1-cus-id.
+
+" SYSTEM FIELD
+*WRITE: sy-datum,sy-uzeit,sy-mandt,sy-langu,sy-uname,sy-repid,sy-subrc.
+
+*
+*data : time type t,time2 type t,num1 TYPE i.
+*time = sy-uzeit.
+*time2 = sy-uzeit + 5.
+*num1 = time2 - time.
+*
+*
+*write: time,time2.
+*NEW-LINE.
+*WRITE: num1.
+*
+*DATA time type t.
+*DATA time2 type t.
+*DATA time3 type t.
+*time = sy-uzeit.
+*time2 = '010000'.
+*time3 = time + time2.
+*write : time,time2,time3.
+
+*
+*WRITE: / 'frist line','data1',
+*        / 'secound line','data2',
+*        /(35) 'third line','data3',
+*        /35 'fourth line','data4'.
+*
+
+
+
+*skip 5.
+*write: 50 'Nuchanart'.
+*skip 2.
+*write 90 'pongpanich'.
+
+
+
+*WRITE:'Date:',sy-datum,35 'Customers Listing',70 'Time:',sy-uzeit.
+*uline:/1(80).
+*WRITE:/1 sy-vline,'Customer ID', 20 sy-vline,'Name', 55 sy-vline,'City',80 sy-vline.
+*ULINE:/1(80).
+*
+*uline (10).
+*format color 1.
+*write:/ sy-vline, 'ABAP' color 3,10 sy-vline.
+*format color off.
+*WRITE: 'hello'.
+*uline:/(10).
+*
+*types: begin of t1,
+*  dat(10) type n,dat2(2) type c,
+*  end of t1.
+*
+*data t type t1-dat value '1'.
+*write: t no-zero,t.
+*
+*data v1 type i VALUE 2.
+*
+*if v1 = 1.
+*  write: 'condition1'.
+*elseif v1 = 2.
+*  write: 'condition2'.
+*else.
+*  write: 'condition others'.
+*endif.
+*
+*case v1.
+*  when 1.
+*    write: 'case1'.
+*  when 2.
+*    write: 'case2'.
+*  when others.
+*    write: 'case others'.
+*endcase.
+*
+*
+*do 3 times.
+*  write / sy-index left-justified.
+*enddo.
+
+*
+*  date = sy-datum.
+*  day = date+6(2).
+*  month = date+4(2).
+*  year = date(4).
+*  year = year + 543.
+
+*data date type d.
+*date = sy-datum+4(2).
+*date = date+4(2).
+*WRITE: sy-datum+6(2),date.
+*
+*
+*DATA: t1(3) TYPE c value 'ABC',
+*      t2 type string VALUE 'Hello',
+*      n1 type i value '123.456',
+*      n2 TYPE p VALUE '123.456',
+*      n3 TYPE n VALUE '123.456'.
+*WRITE:/ t1+2(1),/ t2+2(2),/ n1,n2,n3.
+
+*
+*DATA num1(8) type n.
+*DATA num2(8) type p.
+*num2 = '123.456'.
+*move '1.111' to num2.
+*num1 = '12345.678'.
+*WRITE: num1+1,num2.
+
+*data num(9) type n.
+*num = '1A3456789'.
+*WRITE: num.
+
+*DATA:BEGIN OF tab OCCURS 0,
+*  id like scarr-carrid,
+*  name LIKE scarr-carrname,
+*  connid LIKE spfli-connid,
+*  cityto LIKE spfli-cityto,
+*END OF tab.
+*SELECT scarr~carrid scarr~carrname spfli~connid spfli~cityto INTO TABLE tab
+*  FROM spfli INNER JOIN scarr
+*  ON spfli~carrid = scarr~carrid
+*  WHERE cityto in ('TOKYO','FRANKFURT','NEW YORK')
+*  ORDER BY spfli~cityto DESCENDING scarr~carrid ASCENDING.
+*IF sy-subrc = 0.
+**  LOOP AT tab.
+**    WRITE:/ tab-id,tab-name,tab-connid,tab-cityto.
+**  ENDLOOP.
+*
+*  LOOP AT tab FROM 1 to 5.
+*    WRITE:/ tab-id,tab-name,tab-connid,tab-cityto.
+*  ENDLOOP.
+*ELSE.
+*  WRITE:/'No data'.
+*ENDIF.
+
+
+
+
+*DATA: BEGIN OF tab OCCURS 0,
+*id LIKE customers-id,
+*name LIKE customers-name,
+*city LIKE customers-city,
+*END OF tab.
+**SELECT id name INTO TABLE tab FROM customers WHERE city = 'Bangkok'.
+*SELECT id name city INTO TABLE tab FROM customers.
+*IF sy-subrc = 0.
+*
+*LOOP AT tab WHERE city = 'Bangkok'.
+*WRITE:/ tab-id,tab-name.
+*ENDLOOP.
+*ELSE.
+*WRITE:/ 'No data was found'.
+*ENDIF.
+
+
+
+*DATA: BEGIN OF tab OCCURS 0,
+*
+*id LIKE customers-id,
+*name LIKE customers-name,
+*city LIKE customers-city,
+*END OF tab.
+*SELECT id name city INTO TABLE tab FROM customers.
+** WHERE name LIKE ‘_e%’.
+*IF sy-subrc = 0.
+*LOOP AT tab WHERE name cp '+e*'.
+*WRITE:/ tab-id,tab-name,tab-city.
+*ENDLOOP.
+*ELSE.
+*WRITE:/ 'Data was not found'.
+*ENDIF.
+
+
+*DATA:BEGIN OF tab OCCURS 0,
+*  docno LIKE bkpf-belnr,
+*  year LIKE bkpf-gjahr,
+*END OF tab.
+*SELECT belnr gjahr INTO TABLE tab FROM bkpf.
+*
+*WRITE:/ 'Document Number',18 'Year'.
+*uline.
+*IF sy-subrc = 0.
+*  SORT tab by docno DESCENDING.
+*  LOOP AT tab.
+*    WRITE:/ tab-docno,18 tab-year.
+*  ENDLOOP.
+*ELSE.
+*  WRITE:/ 'Data was not found'.
+*ENDIF.
+
+*DATA:BEGIN OF tab OCCURS 0,
+*  aircode LIKE scarr-carrid,
+*  airname LIKE scarr-carrname,
+*END OF tab.
+*SELECT carrid carrname into TABLE tab FROM scarr.
+*  ULINE (60).
+*  FORMAT COLOR 1.
+* WRITE:/ sy-vline,'Airline Code' ,30 sy-vline,'Airline Name',60 sy-vline.
+* ULINE:/(60).
+* FORMAT COLOR 1 INTENSIFIED off.
+*IF sy-subrc = 0.
+*  LOOP AT tab.
+*  WRITE:/ sy-vline,tab-aircode COLOR 1,30 sy-vline,tab-airname COLOR 2,60 sy-vline.
+*  ENDLOOP.
+*ELSE.
+*  WRITE:/ 'Data was not found'.
+*ENDIF.
+
+*DATA line_count TYPE i.
+*DATA: BEGIN OF tab OCCURS 0,
+*docnumber LIKE bkpf-belnr,
+*year LIKE bkpf-gjahr,
+*END OF tab.
+*SELECT belnr gjahr INTO TABLE tab FROM bkpf.
+*line_count = LINES( tab ).
+*WRITE:/ 'Total record:',line_count.
+*IF sy-subrc = 0.
+*LOOP AT tab.
+*WRITE:/ tab-docnumber,tab-year.
+*ENDLOOP.
+*ENDIF.
+
+*DATA tab LIKE customers OCCURS 0 WITH HEADER LINE.
+*SELECT * INTO TABLE tab FROM customers.
+*READ TABLE tab WITH KEY discount = 000 city = 'Bangkok'.
+*IF sy-subrc = 0.
+*WRITE:/ sy-tabix,tab-id,tab-name,tab-city.
+*ELSE.
+*WRITE 'No data was found'.
+*ENDIF.
+
+*DATA tab LIKE customers OCCURS 0 WITH HEADER LINE.
+*SELECT * INTO TABLE tab FROM customers.
+*READ TABLE tab INDEX 5.
+*IF sy-subrc = 0.
+*WRITE:/ sy-tabix,tab-id,tab-name,tab-city.
+*ELSE.
+*WRITE sy-subrc.
+*ENDIF.
+
+
+*----------------------------------------------------------
+**ch1 ------------------------------------------
+*DATA tmp TYPE i.
+*WRITE 'hello world'. WRITE 'OK'.
+*
+**Literal statement
+*DATA tmp1 TYPE i.
+*DATA tmp2 TYPE c.
+*
+**Chained statment
+*DATA: tmp1 TYPE i,tmp2 TYPE c.
+*
+**Data type
+*DATA:t1(5) TYPE c VALUE '100',
+*      t2 TYPE i VALUE 100,
+*      t3(5) TYPE p VALUE 100,
+*      t4(5) TYPE n VALUE '100',
+*      t5 TYPE d,
+*      t6 TYPE t.
+*Move sy-datum to t5.
+*t6 = sy-uzeit.
+*
+*WRITE: t1,t2,t3,t4,t5,t6.
+*
+**Structure literal
+*DATA BEGIN OF struct.
+*  DATA id LIKE customers-id.
+*  DATA name(25) TYPE c.
+*DATA END OF struct.
+*struct-id = 9.
+*struct-name = 'John'.
+*
+*WRITE: struct-id,struct-name.
+*
+**Structure Chained
+*DATA:BEGIN OF struct,
+*  id LIKE customers-id,
+*  name(25) TYPE c,
+*  END OF struct.
+*struct-id = 9.
+*struct-name = 'John'.
+*
+*WRITE: struct-id,struct-name.
+*
+**Include structure
+*DATA BEGIN OF struct.
+*  INCLUDE STRUCTURE customers.
+*  DATA country(15).
+*DATA END OF struct.
+*
+**Local structure type
+*TYPES:BEGIN OF st_cust,
+*  id LIKE customers-id,
+*  name LIKE customers-name,
+*  END OF st_cust.
+*DATA wa1 TYPE st_cust.
+*DATA wa2 TYPE st_cust.
+*
+*
+**System field
+*WRITE: sy-datum,
+*/ sy-uzeit,
+*/ sy-mandt,
+*/ sy-langu,
+*/ sy-uname,
+*/ sy-repid,
+*/ sy-subrc.
+*
+*date D
+*DATA: day1 TYPE d,day2 TYPE d.
+*day1 = sy-datum.
+*day2 = sy-datum + 1.
+*WRITE: day1,/ day2.
+*
+*DATA: num TYPE i,day TYPE d.
+*num = day2 - day1.
+*day = day2 - day1.
+*WRITE:/ num,day.
+*
+**time T
+*DATA times TYPE t.
+*times = sy-uzeit.
+*WRITE: times,sy-uzeit.
+*
+**sprit value
+*data date type d.
+*date = sy-datum+4(2).
+*date = date+4(2).
+*WRITE: sy-datum+6(2),date.
+*
+*
+*DATA: t1(3) TYPE c value 'ABC',
+*      t2 type string VALUE 'Hello',
+*      n1 type i value '123.456',
+*      n2 TYPE p VALUE '123.456',
+*      n3 TYPE n VALUE '123.456'.
+*WRITE:/ t1+2(1),/ t2+2(2),/ n1,n2,n3.
+*
+*
+***ch2 -------------------------------------
+*REPORT YNUCH2 line-SIZE 25. WRITE: 10'Hello',50'World'.
+*
+*WRITE 'hello world'.
+*NEW-LINE.
+*WRITE 'OK'.
+*NEW-LINE.
+*WRITE:'hello world',/ 'OK'.
+*
+**Format color statment
+*FORMAT COLOR 1.
+*WRITE:/ 'Hello World','Test' COLOR 7,'OK'. FORMAT COLOR OFF.
+*WRITE / 'ABCD'.
+*
+*WRITE:/ 'ABCD' COLOR 2 INTENSIFIED OFF.
+*
+*DATA name TYPE string VALUE 'Nuchanart'.
+*WRITE: name,name COLOR 6 ,name COLOR 6 INVERSE.
+*
+***Zero With Blanks
+*DATA: number(10) TYPE n VALUE 90.
+*WRITE: number,number NO-ZERO.
+*
+***Number (+/-) Sign
+*DATA: v TYPE i VALUE -1. WRITE: v,v NO-SIGN.
+*
+***NO-GROUPING
+*DATA: v TYPE i VALUE 120000.
+*WRITE: v,v NO-GROUPING.
+*
+***DECIMALS
+*DATA: v TYPE P DECIMALS 4 VALUE '1234.5678'.
+*WRITE: v,v DECIMALS 2.
+*
+***Formating Options
+*WRITE:'Formating Options',/ 'LEFT for numberic' ,/ 'RIGHT for character'.
+*DATA tmp(20) VALUE 'TEST'.
+*SKIP.
+*WRITE: tmp  ,/ tmp CENTERED, / tmp RIGHT-JUSTIFIED.
+*SKIP.
+*DATA text TYPE i VALUE 90.
+*WRITE: text,/ text CENTERED, / text LEFT-JUSTIFIED.
+*
+*
+*
+*
+*
+***ch3 ---------------------------------------
+*IF  sy-mandt ='100'.
+*  WRITE:/ 'This is Production Client'.
+*ELSEIF sy-mandt = '800' OR sy-mandt = '805'.
+*  WRITE:/ 'This is Trainning Client'.
+*ELSE.
+*  WRITE:/ 'This is Test Client'.
+*ENDIF.
+*
+*CASE sy-mandt.
+*  WHEN '100'.
+*    WRITE:/ 'A'.
+*  WHEN '800' OR '805'.
+*    WRITE:/ 'B'.
+*  WHEN OTHERS.
+*    WRITE:/ 'C'.
+*ENDCASE.
+*
+*DO 3 TIMES.
+*  WRITE:/ sy-index,'Hello'.
+*ENDDO.
+*
+*WHILE sy-index <> 6.
+*  WRITE sy-index.
+*ENDWHILE.
+*
+*
+*DATA: a1(5),a2,a3,a4 TYPE i.
+*a1 = 9 / 2.
+*a2 = 9 DIV 2.
+*a3 = 9 MOD 2.
+*a4 = 2 ** 4.
+*WRITE:/ a1,a2,a3,a4.
+*
+***ch4 OPEN SQL --------------------------------------
+*
+*DATA wa_customers LIKE customers.
+*SELECT * INTO wa_customers FROM customers.
+*  WRITE:/ wa_customers-id,wa_customers-name.
+*ENDSELECT.
+*
+*DATA:scustom LIKE spfli.
+*SELECT * INTO scustom from spfli.
+*  WRITE:/ scustom-carrid,scustom-cityto.
+*ENDSELECT.
+*
+*TYPES: BEGIN OF sflight,
+*  carrid LIKE sflight-carrid,
+*  connid LIKE sflight-connid,
+*  fldate LIKE sflight-fldate,
+*  price LIKE sflight-price,
+*  END OF sflight.
+*
+*DATA: sflight TYPE sflight.
+*SELECT carrid connid fldate price INTO sflight FROM sflight.
+*  WRITE:/ sflight-carrid,sflight-connid,sflight-fldate,sflight-price.
+*ENDSELECT.
+*
+*TABLES customers.
+*SELECT * into customers FROM customers.
+*  WRITE:/ customers-id,customers-name,customers-city.
+*ENDSELECT.
+*IF sy-subrc <> 0.
+*  WRITE:/ 'No data was found!!!'.
+*ENDIF.
+*
+*
+*TABLES customers.
+*SELECT *  FROM customers
+*  WHERE name LIKE '_e%'.
+*  WRITE:/ customers-id,customers-name.
+*ENDSELECT.
+*
+*DATA: num TYPE i,
+*      min LIKE sflight-price,
+*      max LIKE sflight-price,
+*      avg LIKE sflight-price,
+*      sum LIKE sflight-price.
+*SELECT COUNT( * ) MIN( price ) MAX( price ) AVG( price ) SUM( price )
+*  INTO (num,min,max,avg,sum)
+*  FROM sflight.
+*
+*WRITE: num,min,max,avg,sum.
+*
+***ch5 INNER JOIN-------------------------
+*
+*DATA:BEGIN OF st_struct,
+*  carrid LIKE spfli-carrid,
+*  connid LIKE spfli-connid,
+*  cityto LIKE spfli-cityto,
+*  fldate LIKE sflight-fldate,
+*  price LIKE sflight-price,
+*  END OF st_struct.
+*
+*ULINE:/(110).
+*  WRITE:/1 sy-vline,'Airline Code',20 sy-vline,'Connection Number',50 sy-vline,'Flight Date',70 sy-vline, 'Arrival City',90 sy-vline,'Airfare',110 sy-vline.
+*ULINE:/(110).
+*SELECT spfli~carrid spfli~connid spfli~cityto sflight~fldate sflight~price
+*  INTO (st_struct-carrid,st_struct-connid,st_struct-cityto,
+*  st_struct-fldate,st_struct-price)
+*  from spfli INNER JOIN sflight on spfli~connid = sflight~connid
+*  WHERE spfli~carrid = 'LH'.
+*  WRITE:/1 sy-vline,st_struct-carrid,20 sy-vline,st_struct-connid,50 sy-vline,st_struct-fldate,70 sy-vline,st_struct-cityto,90 sy-vline,st_struct-price LEFT-JUSTIFIED,110 sy-vline.
+*ENDSELECT.
+*
+***ch6 Internal Table ------------------------
+*DATA:BEGIN OF tab OCCURS 0,
+*  id like scarr-carrid,
+*  name LIKE scarr-carrname,
+*  connid LIKE spfli-connid,
+*  cityto LIKE spfli-cityto,
+*END OF tab.
+*SELECT scarr~carrid scarr~carrname spfli~connid spfli~cityto INTO TABLE tab
+*  FROM spfli INNER JOIN scarr
+*  ON spfli~carrid = scarr~carrid
+*  WHERE cityto in ('TOKYO','FRANKFURT','NEW YORK')
+*  ORDER BY spfli~cityto DESCENDING scarr~carrid ASCENDING.
+*IF sy-subrc = 0.
+**  LOOP AT tab.
+**    WRITE:/ tab-id,tab-name,tab-connid,tab-cityto.
+**  ENDLOOP.
+*
+*  LOOP AT tab FROM 1 to 5.
+*    WRITE:/ tab-id,tab-name,tab-connid,tab-cityto.
+*  ENDLOOP.
+*ELSE.
+*  WRITE:/'No data'.
+*ENDIF.
+*
+*
+*
+*
+*DATA: BEGIN OF tab OCCURS 0,
+*id LIKE customers-id,
+*name LIKE customers-name,
+*city LIKE customers-city,
+*END OF tab.
+**SELECT id name INTO TABLE tab FROM customers WHERE city = 'Bangkok'.
+*SELECT id name city INTO TABLE tab FROM customers.
+*IF sy-subrc = 0.
+*
+*LOOP AT tab WHERE city = 'Bangkok'.
+*WRITE:/ tab-id,tab-name.
+*ENDLOOP.
+*ELSE.
+*WRITE:/ 'No data was found'.
+*ENDIF.
+*
+*
+*
+*DATA: BEGIN OF tab OCCURS 0,
+*
+*id LIKE customers-id,
+*name LIKE customers-name,
+*city LIKE customers-city,
+*END OF tab.
+*SELECT id name city INTO TABLE tab FROM customers.
+** WHERE name LIKE ‘_e%’.
+*IF sy-subrc = 0.
+*LOOP AT tab WHERE name cp '+e*'.
+*WRITE:/ tab-id,tab-name,tab-city.
+*ENDLOOP.
+*ELSE.
+*WRITE:/ 'Data was not found'.
+*ENDIF.
+*
+*
+*DATA:BEGIN OF tab OCCURS 0,
+*  docno LIKE bkpf-belnr,
+*  year LIKE bkpf-gjahr,
+*END OF tab.
+*SELECT belnr gjahr INTO TABLE tab FROM bkpf.
+*
+*WRITE:/ 'Document Number',18 'Year'.
+*uline.
+*IF sy-subrc = 0.
+*  SORT tab by docno DESCENDING.
+*  LOOP AT tab.
+*    WRITE:/ tab-docno,18 tab-year.
+*  ENDLOOP.
+*ELSE.
+*  WRITE:/ 'Data was not found'.
+*ENDIF.
+*
+*DATA:BEGIN OF tab OCCURS 0,
+*  aircode LIKE scarr-carrid,
+*  airname LIKE scarr-carrname,
+*END OF tab.
+*SELECT carrid carrname into TABLE tab FROM scarr.
+*  ULINE (60).
+*  FORMAT COLOR 1.
+* WRITE:/ sy-vline,'Airline Code' ,30 sy-vline,'Airline Name',60 sy-vline.
+* ULINE:/(60).
+* FORMAT COLOR 1 INTENSIFIED off.
+*IF sy-subrc = 0.
+*  LOOP AT tab.
+*  WRITE:/ sy-vline,tab-aircode COLOR 1,30 sy-vline,tab-airname COLOR 2,60 sy-vline.
+*  ENDLOOP.
+*ELSE.
+*  WRITE:/ 'Data was not found'.
+*ENDIF.
+*
+*DATA line_count TYPE i.
+*DATA: BEGIN OF tab OCCURS 0,
+*docnumber LIKE bkpf-belnr,
+*year LIKE bkpf-gjahr,
+*END OF tab.
+*SELECT belnr gjahr INTO TABLE tab FROM bkpf.
+*line_count = LINES( tab ).
+*WRITE:/ 'Total record:',line_count.
+*IF sy-subrc = 0.
+*LOOP AT tab.
+*WRITE:/ tab-docnumber,tab-year.
+*ENDLOOP.
+*ENDIF.
+*
+*DATA tab LIKE customers OCCURS 0 WITH HEADER LINE.
+*SELECT * INTO TABLE tab FROM customers.
+*READ TABLE tab WITH KEY discount = 000 city = 'Bangkok'.
+*IF sy-subrc = 0.
+*WRITE:/ sy-tabix,tab-id,tab-name,tab-city.
+*ELSE.
+*WRITE 'No data was found'.
+*ENDIF.
+*
+*DATA tab LIKE customers OCCURS 0 WITH HEADER LINE.
+*SELECT * INTO TABLE tab FROM customers.
+*READ TABLE tab INDEX 5.
+*IF sy-subrc = 0.
+*WRITE:/ sy-tabix,tab-id,tab-name,tab-city.
+*ELSE.
+*WRITE sy-subrc.
+*ENDIF.
+
+************************************************************
+*ch7
+*OFFSET
+*DATA tmp(10) TYPE c.
+*tmp = 'JANUARY'.
+*WRITE:/ tmp+2(4),/ tmp+6(1),/ tmp+0(1),/ tmp+0(4),/ tmp+2.
+
+*SUBFIELDS
+*DATA: tmp(10) TYPE c,tmp2(10) TYPE c.
+*tmp = 'JANUARY'.
+*tmp+1(2) = 'XX'. "JXXUARY
+*tmp2 = tmp+5(2).  "RY
+*WRITE: tmp,/ tmp2.
+
+*DATA tmp(5) TYPE c VALUE 'ABCDE'.
+*SHIFT tmp. "BCDE
+*WRITE tmp.
+*
+*DATA tmp(5) TYPE c VALUE 'ABCDE'.
+*SHIFT tmp BY 2 PLACES. "CDE
+*WRITE tmp.
+
+
+*DATA tmp(5) TYPE c VALUE 'ABCDE'.
+*SHIFT tmp BY 2 PLACES CIRCULAR. "CDE <-AB => CDEAB
+*WRITE tmp.
+
+*DATA tmp(5) TYPE c VALUE 'ABCDE'.
+*SHIFT tmp RIGHT BY 2 PLACES CIRCULAR. "DE->ABC => DEABC
+*WRITE tmp.
+
+*
+*DATA tmp(10) TYPE c VALUE 'AB'.
+*SHIFT tmp RIGHT DELETING TRAILING space.
+*WRITE:/ tmp.
+*SHIFT tmp LEFT DELETING LEADING space.
+*WRITE:/ tmp.
+
+
+*DATA tmp(50) TYPE c VALUE 'Thai-Nichi Institute of Technology'.
+*SHIFT tmp UP TO 'Tech'.
+*IF sy-subrc = 0.
+*  WRITE tmp.
+*ELSE.
+*  WRITE 'No Data'.
+*ENDIF.
+
+
+*DATA tmp(5) TYPE c VALUE 'ABCDE'.
+*SEARCH tmp FOR 'bc'.
+*IF sy-subrc = 0.
+*  WRITE:/ sy-fdpos.
+*ELSE.
+*  WRITE 'No Data'.
+*ENDIF.
+
+*DATA tmp(5) TYPE c VALUE 'I am a boy'.
+*SEARCH tmp FOR 'am'.
+*IF sy-subrc = 0.
+*  WRITE:/ sy-fdpos.
+*ELSE.
+*  WRITE 'No Data'.
+*ENDIF.
+
+*
+*DATA tmp(20) TYPE c VALUE 'Premier writing pad'.
+*TRANSLATE tmp TO UPPER CASE.
+*WRITE / tmp.
+
+*
+*DATA tmp(20) TYPE c VALUE 'Premier writing pad'.
+*TRANSLATE tmp TO LOWER CASE.
+*WRITE / tmp.
+
+*
+*DATA tmp(20) TYPE c VALUE 'Premier writing pad'.
+**TRANSLATE tmp USING 'rX'.
+*TRANSLATE tmp USING 'iyex'.
+*WRITE / tmp.
+
+*DATA tmp1(10) TYPE n VALUE 90.
+*WRITE / tmp1.
+*WRITE / tmp1 no-ZERO.
+
+***REPLACE
+
+*DATA tmp(30) TYPE c VALUE 'a rule is exactly a same'.
+*REPLACE 'a' WITH 'the' into tmp.
+*WRITE tmp.
+*
+*DATA tmp(30) TYPE c VALUE 'a rule is exactly a same'.
+*WHILE sy-subrc = 0.
+*REPLACE 'a' WITH 'the' into tmp.
+*ENDWHILE.
+*WRITE tmp.
+
+***CONDENSE del space
+*DATA tmp(40) TYPE c VALUE 'I      am a girl'.
+*CONDENSE tmp.
+*WRITE tmp.
+*CONDENSE tmp NO-GAPS.
+*WRITE / tmp.
+
+***CONCATENATE
+*DATA: tmp1(2) TYPE c VALUE 'AB',
+*tmp2(4) TYPE c VALUE 'CDEF',
+*tmp3(2) TYPE c VALUE 'GH',
+*tmp4(10) TYPE c.
+*
+*CONCATENATE tmp1 tmp2 tmp3 INTO tmp4.
+*WRITE tmp4.
+*CONCATENATE tmp1 tmp2 tmp3 INTO tmp4 SEPARATED BY ','.
+*
+*WRITE tmp4.
+
+*DATA tmp(10) TYPE c.
+*
+*CONCATENATE sy-datum+6(2) '/' sy-datum+4(2) '-' sy-datum+0(4) INTO tmp.
+*WRITE / tmp.
+
+
+***Split
+*DATA name(30) TYPE c VALUE 'John, Peter, David'.
+*DATA: one(10) TYPE c,
+*two(10) TYPE c,
+*three(10) TYPE c.
+*
+*SPLIT name AT ',' INTO one two three.
+*write: one,two,three.
+
+*DATA name TYPE string OCCURS 0 WITH HEADER LINE.
+*DATA tmp(40) VALUE 'John Peter David'.
+*SPLIT tmp AT space INTO TABLE name.
+*LOOP AT name.
+*WRITE:/ name.
+*ENDLOOP.
+
+
+****Example1
+*DATA: BEGIN OF sales OCCURS 0,
+*  name,
+*  qty TYPE i,
+*END OF sales.
+*
+*sales-name = 'A'.
+*sales-qty = 10.
+*APPEND sales.
+*
+*sales-name = 'A'.
+*sales-qty = 20.
+*APPEND sales.
+*
+*sales-name = 'A'.
+*sales-qty = 30.
+*APPEND sales.
+*
+*sales-name = 'B'.
+*sales-qty = 5.
+*APPEND sales.
+*
+*sales-name = 'B'.
+*sales-qty = 10.
+*APPEND sales.
+*
+*START-OF-SELECTION.
+*LOOP AT sales.
+*"Print Header
+*AT FIRST.
+*FORMAT COLOR COL_HEADING.
+*WRITE:/ 'Name',23 'Qty',35 ' '.
+*ULINE: /(35).
+*FORMAT COLOR OFF.
+*ENDAT.
+*AT NEW name.
+*IF sy-tabix <> 1. "Skip (Blank line) between customer
+*SKIP.
+*ENDIF.
+*WRITE:/ sales-name.
+*ULINE: /(5).
+*ENDAT.
+*WRITE: /15 sales-qty.
+*AT END OF name.
+*ULINE: /(35).
+*SUM.
+*WRITE: /5 'Total',15 sales-qty COLOR COL_TOTAL.
+*ENDAT.
+*AT LAST.
+*ULINE: /(35).
+*SUM.
+*WRITE: /2 'Grand Total',15 sales-qty COLOR 7.
+*ULINE: /(35).
+*ENDAT.
+*ENDLOOP.
+
+
+*
+*DATA: BEGIN OF itab OCCURS 0,
+*
+*f1 TYPE i,
+*f2(6) TYPE c,
+*f3(10) TYPE n,
+*f4(16) TYPE p DECIMALS 2,
+*END OF itab.
+*
+*DATA: sub_tot(10) TYPE p DECIMALS 3.
+*
+*itab-f1= 1.
+*itab-f2= 'ONE'.
+*itab-f3= 10.
+*itab-f4= '1000.00'.
+*APPEND itab.
+*itab-f1= 1.
+*itab-f2= 'ONE'.
+*itab-f3= 20.
+*itab-f4= '2000.00'.
+*APPEND itab.
+*itab-f1= 1.
+*itab-f2= 'ONE'.
+*itab-f3= 30.
+*itab-f4= '3000.00'.
+*APPEND itab.
+*itab-f1= 2.
+*itab-f2= 'TWO'.
+*itab-f3= 10.
+*itab-f4= '1000.00'.
+*APPEND itab.
+*CLEAR itab.
+*itab-f1= 2.
+*itab-f2= 'TWO'.
+*itab-f3= 20.
+*
+*itab-f4= '2000.00'.
+*APPEND itab.
+*CLEAR itab.
+*itab-f1=3.
+*itab-f2= 'THREE'.
+*itab-f3= 10.
+*itab-f4='1000.00'.
+*APPEND itab.
+*CLEAR itab.
+*itab-f1=3.itab-f2= 'THREE'.
+*itab-f3= 20.
+*itab-f4='2000.00'.
+*APPEND itab.
+*CLEAR itab.
+*SORT itab BY f1.
+*LOOP AT itab.
+*AT FIRST.
+*WRITE: /35 ' MATERIAL DETAILS:'.
+*ULINE.
+*ENDAT.
+*AT NEW f1.
+*WRITE: / 'DETAILS OF MATERIAL:' COLOR 7 , itab-f1.
+*ULINE.
+*ENDAT.
+*WRITE: / itab-f1, itab-f2, itab-f3, itab-f4.
+*sub_tot = sub_tot + itab-f4.
+*AT END OF f1.
+*ULINE.
+*WRITE: / 'SUB TOTAL :' COLOR 3 INVERSE ON, sub_tot COLOR 3 INVERSE ON.
+*CLEAR sub_tot.
+*ENDAT.
+*AT LAST.
+*SUM.
+*ULINE.
+*WRITE: 'SUM:', itab-f4.
+*ULINE.
+*ENDAT.
+*ENDLOOP
+
+
+* - - - ---<ch 7> - - -- - - - - -
+*Example 4
+*DATA: BEGIN OF airlines OCCURS 0,
+*  id like sflight-carrid,
+*  name like scarr-carrname,
+*  price like sflight-price,
+*END OF airlines.
+*SELECT sflight~carrid scarr~carrname sflight~price INTO TABLE airlines
+*FROM sflight INNER JOIN scarr ON sflight~carrid = scarr~carrid.
+*
+*SKIP.
+*
+*START-OF-SELECTION.
+*LOOP AT airlines.
+*AT FIRST.
+*WRITE: / 'Airline Code',30 'Price'.
+*ULINE:/(100).
+*ENDAT.
+*AT NEW id.
+*IF sy-tabix <> 1.
+*SKIP.
+*ENDIF.
+*WRITE:/ airlines-id.
+*ULINE:/(10).
+*ENDAT.
+*WRITE:/20 airlines-name,airlines-price.
+*AT END OF id.
+*ULINE:/(100).
+*SUM.
+*WRITE: /5 'Total Price',30 airlines-price COLOR 3.
+*ENDAT.
+*AT LAST.
+*ULINE:/(100).
+*SUM.
+*WRITE:/ 'Grand Total Price',30 airlines-price COLOR 7.
+*ULINE:/(100).
+*ENDAT.
+*ENDLOOP.
+
+*** Example 5
+*DATA: BEGIN OF ta OCCURS 0,
+*carrid LIKE spfli-carrid,
+*connid LIKE spfli-connid,
+*cityfrom LIKE spfli-cityfrom,
+*cityto LIKE spfli-cityto,
+*distance LIKE spfli-distance,
+*END OF ta.
+*
+*SELECT carrid connid cityfrom cityto
+*distance UP TO 5 ROWS INTO TABLE ta
+*FROM spfli.
+*
+*LOOP AT ta.
+*AT FIRST.
+*WRITE:/ 'Flight Details'.
+*WRITE:/ 'Airline Code' COLOR 5,14 'Connection No.' COLOR 5,
+*29 'Departure City' COLOR 5, 44 'Arival City' COLOR 5,
+*58 'Distance' COLOR 5.
+*ULINE.
+*ENDAT.
+*AT NEW carrid.
+*WRITE:/ ta-carrid, ' : New Airline'.
+*ULINE.
+*ENDAT.
+*WRITE:/14 ta-connid,29 ta-cityfrom,
+*44 ta-cityto,58 ta-distance.
+*AT END OF carrid.
+*ULINE.
+*SUM.
+*WRITE:/ ta-carrid,58 ta-distance.
+*ULINE.
+*ENDAT.
+*AT LAST.
+*SUM.
+*WRITE:/ 'Total',58 ta-distance.
+*WRITE:/ 'End of Loop'.
+*ENDAT.
+*ENDLOOP.
+
+*PARAMETERS tmp(10) TYPE c.
+*WRITE: / tmp.
+
+*PARAMETERS tmp(10) TYPE c LOWER CASE.
+*WRITE: / tmp.
+
+*PARAMETERS: text TYPE string,
+*tmp1(10) type c,
+*tmp2(10) TYPE c LOWER CASE,
+*tmp3 LIKE sy-datum DEFAULT sy-datum,
+*tmp4 TYPE d DEFAULT '20181231',
+*tmp5 TYPE i,
+*tmp6 TYPE p DECIMALS 2,
+*tmp7(5) TYPE n,
+*airline1(3),
+*airline2 LIKE spfli-carrid.
+*DATA id LIKE customers-id VALUE 90.
+*WRITE: text,tmp1,tmp2,tmp3,tmp4,tmp5,tmp6,
+*tmp7,airline1,airline2,id.
+*
+*TABLES customers.
+*PARAMETERS pid LIKE customers-id.
+*
+*START-OF-SELECTION.
+*SELECT SINGLE *
+*FROM customers
+*WHERE id = pid.
+*IF sy-subrc = 0.
+*
+*WRITE:/ customers-id,customers-name,customers-city.
+*
+*ELSE.
+*WRITE:/ 'No data found'.
+*ENDIF.
+
+*PARAMETERS: check1 AS CHECKBOX,
+*check2 AS CHECKBOX DEFAULT 'X'.
+
+*PARAMETERS: check1 AS CHECKBOX,
+*check2 AS CHECKBOX,check3 AS CHECKBOX.
+*
+*IF check1 = 'X' AND check2 = 'X'.
+*  WRITE 'check2 and check3 selected'.
+*
+*ELSEIF check2 = 'X'.
+*  WRITE 'check2 selected'.
+*ELSEIF check3 = 'X'.
+*  WRITE 'check3 selected'.
+*ELSEIF check1 = 'X'.
+*  WRITE 'check1 selected'.
+*ELSE.
+*  WRITE 'nothing selected'.
+*ENDIF.
+
+*PARAMETERS: radio1 RADIOBUTTON GROUP test,
+*radio2 RADIOBUTTON GROUP test.
+*
+*IF radio1 = 'X'.
+*WRITE : radio1 COLOR 3,radio2 COLOR 2.
+*ELSE.
+*WRITE : radio1 COLOR 2,radio2 COLOR 3.
+*ENDIF.
+
+*PARAMETERS id LIKE scarr-carrid.
+*DATA:BEGIN OF wa,
+*  carrid LIKE scarr-carrid,
+*  carrname LIKE scarr-carrname,
+*END OF wa.
+*
+*SELECT SINGLE carrid carrname
+*  INTO wa
+*  FROM scarr
+*  WHERE carrid = id.
+*
+*  IF  sy-subrc = 0.
+*    WRITE:/ wa-carrid,wa-carrname.
+*  ELSE.
+*    WRITE:/ 'No data not found'.
+*  ENDIF.
+
+*PARAMETERS: ASCE RADIOBUTTON GROUP test,
+*DESC RADIOBUTTON GROUP test.
+
+*DATA:BEGIN OF wa,
+*  carrid LIKE scarr-carrid,
+*  carrname LIKE scarr-carrname,
+*END OF wa.
+*
+*IF ASCE = 'X'.
+*SELECT carrid carrname
+*  INTO wa
+*  FROM scarr ORDER BY carrid ASCENDING.
+*
+*  IF  sy-subrc = 0.
+*    WRITE:/ wa-carrid,wa-carrname.
+*  ELSE.
+*    WRITE:/ 'No data not found'.
+*  ENDIF.
+*
+*ENDSELECT.
+*ELSE.
+*SELECT carrid carrname
+*  INTO wa
+*  FROM scarr ORDER BY carrid DESCENDING.
+*
+*  IF  sy-subrc = 0.
+*    WRITE:/ wa-carrid,wa-carrname.
+*  ELSE.
+*    WRITE:/ 'No data not found'.
+*  ENDIF.
+*
+*ENDSELECT.
+*ENDIF.
+
+
+*PARAMETERS: NUM1 TYPE p,NUM2 TYPE p.
+*DATA result TYPE p.
+*DATA oprator(1).
+*PARAMETERS: PLUS RADIOBUTTON GROUP G,
+*MINUS RADIOBUTTON GROUP G,MULTIPLY RADIOBUTTON GROUP G,
+*DEVIDE RADIOBUTTON GROUP G.
+*IF PLUS = 'X'.
+*  result = NUM1 + NUM2.
+*  oprator = '+'.
+*ELSEIF MINUS = 'X'.
+*  result = NUM1 - NUM2.
+*  oprator = '-'.
+*ELSEIF MULTIPLY = 'X'.
+*  result = NUM1 * NUM2.
+*  oprator = '*'.
+*ELSEIF DEVIDE = 'X'.
+*  result = NUM1 / NUM2.
+*  oprator = '/'.
+*ENDIF.
+*
+*WRITE: NUM1 LEFT-JUSTIFIED,oprator CENTERED,NUM2 RIGHT-JUSTIFIED,'=' CENTERED,result.
+
+
+*TABLES scustom.
+*SELECT-OPTIONS iid FOR scustom-id.
+*
+*SELECT * FROM scustom
+*WHERE id IN iid
+*ORDER BY id.
+*WRITE: / scustom-id,scustom-name.
+*ENDSELECT.
+
+
+*TABLES customers.
+*SELECT-OPTIONS id2 FOR customers-id.
+*SELECT * FROM customers
+*  WHERE id IN id2
+*  ORDER BY id.
+*  WHILE: / customers-id,customers-name,customers-city.
+*ENDSELET.
+
+
+* - - - - - - - - -- - - - - - Subroutine *(Function)
+*DATA tab LIKE customers
+*OCCURS 0 WITH HEADER LINE.
+*SELECT * INTO TABLE tab
+*FROM customers.
+*PERFORM sub.
+*PERFORM sub.
+*
+*
+*FORM sub.
+*  LOOP AT tab.
+*    WRITE: / tab-id,tab-name.
+*  ENDLOOP.
+*ENDFORM.
+
+*
+*DATA result TYPE i VALUE 1.
+*PARAMETERS number TYPE i.
+*PERFORM factorial.
+*WRITE: result.
+*
+*FORM factorial.
+*IF number <= 1.
+*EXIT.
+*ENDIF.
+*result = result * number.
+*number = number - 1.
+*PERFORM factorial.
+*ENDFORM.
+
+
+**data declaration
+*TYPES: BEGIN OF strucbkpf,
+*
+*belnr TYPE bkpf-belnr,
+*gjahr TYPE bkpf-gjahr,
+*END OF strucbkpf.
+*
+*DATA tab TYPE TABLE OF strucbkpf WITH HEADER LINE.
+**processing block
+*select belnr gjahr into table tab
+*from bkpf where blart = 'KR'. "Vendor Invoice
+*
+*LOOP AT tab.
+*WRITE:/ tab-belnr,tab-gjahr.
+*ENDLOOP.
+*LOOP AT tab.
+*WRITE:/ tab-belnr,tab-gjahr.
+*ENDLOOP.
+
+*
+**Data declaration
+*TYPES: BEGIN OF strucbkpf,
+*belnr TYPE bkpf-belnr,
+*gjahr TYPE bkpf-gjahr ,
+*END OF strucbkpf.
+*
+*DATA tab TYPE TABLE OF strucbkpf with header line.
+**Processing block
+*PERFORM read_data.
+*PERFORM display_data.
+*PERFORM display_data.
+*FORM read_data.
+*SELECT belnr gjahr INTO TABLE tab
+*FROM bkpf WHERE blart ='KR'.
+*
+*ENDFORM.
+*FORM display_data.
+*LOOP AT tab.
+*WRITE: / tab-belnr,tab-gjahr.
+*ENDLOOP.
+*ENDFORM.
+
+
+*DATA: a1,a2 TYPE c.
+*a1 = 'A'.
+*a2 = 'A'.
+*
+*PERFORM routine1 USING a1 a2.
+*
+*
+*FORM routine1 USING VALUE(f1) VALUE(f2).
+*WRITE: f1,f2.
+*f1 = 'X'. f2 = 'X'.
+*WRITE: / f1,f2.
+*WRITE: / a1,a2.
+*ENDFORM.
+
+
+**call by ref return func
+*DATA: a3.
+*a3 = 'A'.
+*WRITE a3.
+*PERFORM routine2 USING a3.
+*WRITE a3.
+*
+*FORM routine2 USING f3.
+*f3 = 'X'.
+*WRITE a3.
+*ENDFORM.
+
+
+**### call by val, ref
+*DATA: a1,a2.
+*a1 = 'A'.
+*a2 = 'A'.
+*PERFORM routine1 USING a1 a2.
+*
+*FORM routine1 USING VALUE(f1) f2.
+*  f1 = 'X'.
+*  f2 = 'X'.
+*
+*  WRITE: a1,a2,/ f1,f2.
+*ENDFORM.
+
+
+*DATA: a4, a5.
+*a4 = 'A'.
+*a5 = 'A'.
+*PERFORM routine3 USING a4 a5.
+*WRITE: a4, a5.
+*
+*FORM routine3 CHANGING VALUE(f4) VALUE(f5).
+*f4 = 'X'. WRITE a4.
+*f5 = 'X'. WRITE a5.
+*ENDFORM.
+
+*sub use using don't call inner routine ,changing
+
+
+*DATA: a1,a2,a3.
+*a1 = 'A'. a2 = 'A'. a3 = 'A'.
+*PERFORM subroutine USING a1 a2 CHANGING
+*a3.
+*WRITE: a1, a2, a3.
+*FORM subroutine USING VALUE(f1) f2
+*CHANGING VALUE(f3) .
+*f1 = 'X'. f2 = 'X'. f3 = 'X'.
+*WRITE: a1, a2, a3.
+*ENDFORM.
+
+*TABLES sflight.
+*SELECT * FROM sflight.
+*PERFORM subproc USING sflight.
+*ENDSELECT.
+*
+*FORM subproc USING rec LIKE sflight.
+*
+*WRITE: / rec-carrid.
+*
+*ENDFORM.
+
+*** don't have in slide
+
+*DATA wa TYPE customers.
+*PARAMETERS id_input.
+*SELECT SINGLE * INTO wa FROM customers WHERE id = id_input.
+*
+*PERFORM sub USING wa.
+*
+*FORM sub USING wa1 TYPE customers.
+*  WRITE: / wa-id,wa-name.
+*ENDFORM.
+
+*DATA tab LIKE customers OCCURS 0 WITH HEADER LINE.
+*PERFORM sub2.
+*PERFORM sub TABLES tab.
+*
+*FORM sub TABLES tab1 STRUCTURE tab.
+*  LOOP AT tab1.
+*    WRITE: / tab1-id,tab1-name,tab1-city.
+*  ENDLOOP.
+*ENDFORM.
+*
+*FORM sub2.
+*  SELECT * INTO TABLE tab FROM customers.
+*ENDFORM.
+
+
+
+
+*
+*DATA tab LIKE customers OCCURS 0 WITH HEADER LINE.
+*DATA: a1,a2,a3.
+*a1 = 'A'.
+*a2 = 'A'.
+*a3 = 'A'.
+*DATA wa TYPE customers.
+*
+*SELECT * INTO TABLE tab FROM customers.
+*SELECT SINGLE * INTO wa FROM customers.
+*  PERFORM sub TABLES tab USING a1 a2 a3 wa.
+*
+*
+*FORM sub TABLES tab1 STRUCTURE tab
+*  USING VALUE(f1) f2 CHANGING VALUE(f3)
+*  wa1 TYPE customers.
+*LOOP at tab1.
+*  WRITE: / tab1-id,tab1-name.
+*ENDLOOP.
+*FREE tab1.
+*
+*
+*f1 = 'X'. f2 = 'X'. f3 = 'X'.
+*WRITE:/ a1,a2,a3.
+*
+*WRITE:/ wa1-id,wa1-name.
+*CLEAR wa1.
+*
+*ENDFORM.
+
+
+**example tmp
+*DATA tab LIKE customers OCCURS 0 WITH HEADER LINE.
+*PERFORM sub2.
+*PERFORM sub TABLES tab.
+*
+*FORM sub TABLES tab1 STRUCTURE tab.
+*  LOOP AT tab1.
+*    WRITE: / tab1-id,tab1-name,tab1-city.
+*  ENDLOOP.
+*ENDFORM.
+*
+*FORM sub2.
+*  SELECT * INTO TABLE tab FROM customers.
+*ENDFORM.
+
+
+
+
+
+*DATA:BEGIN OF tab OCCURS 0,
+*  bname LIKE usr02-bname,
+*  trdat LIKE usr02-trdat,
+*  ltime LIKE usr02-ltime,
+*END OF tab.
+*WRITE: / 'Date :',sy-datum,
+*30 'User listing',
+*55 'Time :',sy-uzeit.
+*
+*ULINE: /(70).
+*FORMAT COLOR 1.
+*WRITE: / sy-vline,(18) 'User ID' CENTERED,
+*20 sy-vline,(23) 'Last Logon Date' CENTERED,
+*45 sy-vline,(23) 'Last Logon Time' CENTERED,
+*70 sy-vline.
+*FORMAT COLOR OFF.
+*uline: /(70).
+*PERFORM read_data.
+*PERFORM display_data.
+*
+*FORM read_data.
+*  SELECT bname trdat ltime
+*    INTO TABLE tab
+*    FROM usr02
+*    WHERE bname BETWEEN 'TNIAB-01' AND 'TNIAB-42'.
+*ENDFORM.
+*
+*FORM display_data.
+*  LOOP at tab.
+*    WRITE:/ sy-vline, tab-bname COLOR 4,
+*    20 sy-vline,(23) tab-trdat CENTERED,
+*    45 sy-vline,(23) tab-ltime CENTERED,
+*    70 sy-vline.
+*  ENDLOOP.
+*  ULINE: /(70).
+*  DATA num TYPE i.
+*  num = lines( tab ).
+*  IF sy-subrc <> 0.
+*    WRITE: / 'No data'.
+*  ELSE.
+*    WRITE: /20 'Total',num,'records'.
+*  ENDIF.
+*ENDFORM.
+
+
+
+
+*DATA:BEGIN OF tab OCCURS 0,
+*  bname LIKE usr02-bname,
+*  trdat LIKE usr02-trdat,
+*  so_key LIKE adcp-so_key,
+*END OF tab.
+*PARAMETERS tmp(8).
+*
+*DATA d(2) TYPE n.
+*d = tmp.
+*DATA c TYPE string.
+*
+*CONCATENATE 'TNIAB-' d into c.
+*
+*
+*WRITE: / 'Date :',sy-datum,
+*30 'User listing',
+*55 'Time :',sy-uzeit.
+*ULINE: /(70).
+*FORMAT COLOR 1.
+*WRITE: / sy-vline,(18) 'User ID' CENTERED,
+*20 sy-vline,(23) 'Last Logon Date' CENTERED,
+*45 sy-vline,(23) 'Sokey' CENTERED,
+*70 sy-vline.
+*FORMAT COLOR OFF.
+*uline: /(70).
+*
+*PERFORM read_data using c.
+*PERFORM display_data.
+*
+*
+*FORM read_data USING c.
+*  SELECT a~bname a~trdat c~so_key
+*    INTO TABLE tab
+*    FROM usr02 as a INNER JOIN usr21 as b
+*    on a~bname = b~bname INNER JOIN adcp as c
+*    on c~addrnumber = b~addrnumber and c~persnumber = b~persnumber
+*    WHERE a~bname = c.
+*ENDFORM.
+*
+*
+*
+*FORM display_data.
+*  LOOP at tab.
+*    WRITE:/ sy-vline, tab-bname COLOR 4,
+*    20 sy-vline,(23) tab-trdat CENTERED,
+*    45 sy-vline,(23) tab-so_key CENTERED,
+*    70 sy-vline.
+*  ENDLOOP.
+*  ULINE: /(70).
+*  DATA num TYPE i.
+*  num = lines( tab ).
+*  IF sy-subrc <> 0.
+*    WRITE: / 'No data'.
+*  ELSE.
+*    WRITE: /20 'Total',num,'records'.
+*  ENDIF.
+*ENDFORM.
+
+*********************************************
+**CALL FUNCRION MODULE SE37,SE80
+
+
+*PARAMETERS: no1 TYPE i,
+*no2 TYPE i.
+*DATA resultcal TYPE i.
+*CALL FUNCTION 'Z_BOKIE'
+*EXPORTING
+*number1 = no1
+*number2 = no2
+*IMPORTING
+*result = resultcal
+*EXCEPTIONS
+*  INVALID = 1
+*  OTHERS = 2.
+*
+*IF SY-SUBRC = 1.
+*  WRITE: / 'Please enter number <10'.
+*else.
+*  WRITE: / resultcal.
+*ENDIF.
+
+
+
+*PARAMETERS: amount TYPE p DECIMALS 2,
+*language LIKE sy-langu DEFAULT sy-langu.
+*DATA wa_word TYPE spell.
+*START-OF-SELECTION.
+*CALL FUNCTION 'SPELL_AMOUNT'
+*EXPORTING
+*amount = amount
+*currency = 'USD'
+*language = language
+*IMPORTING
+*in_words = wa_word
+*EXCEPTIONS
+*not_found = 1
+*too_large = 2
+*OTHERS = 3.
+*IF sy-subrc = 0.
+*WRITE: / wa_word-word,wa_word-decword.
+*ELSE.
+*WRITE: / 'No data'.
+*ENDIF.
+
+
+*******----------------------
+
+SELECTION-SCREEN BEGIN OF BLOCK part1 WITH FRAME TITLE text-001.
+PARAMETERS: a RADIOBUTTON GROUP x,
+            b RADIOBUTTON GROUP x.
+SELECTION-SCREEN END OF BLOCK part1.
+
+SELECTION-SCREEN BEGIN OF BLOCK part2 WITH FRAME TITLE text-002.
+PARAMETERS: c RADIOBUTTON GROUP y,
+            d RADIOBUTTON GROUP y.
+            e RADIOBUTTON GROUP y.
+SELECTION-SCREEN END OF BLOCK part2.

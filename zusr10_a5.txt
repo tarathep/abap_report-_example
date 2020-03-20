@@ -1,0 +1,138 @@
+﻿*************<1>****************
+*PARAMETERS cid(2) type c.
+*DATA: BEGIN OF tab OCCURS 0,
+*    id LIKE scustom-id,
+*    name LIKE scustom-name,
+*    city LIKE scustom-city,
+*    country like scustom-country,
+*  END OF tab.
+*PERFORM read_data using cid.
+*data num type i.
+*num = lines( tab ).
+*IF sy-subrc = 0.
+*WRITE:/ sy-vline,'Date : ',sy-datum  ,25 'Airline Customer',50 'Time : ',sy-uzeit.
+*WRITE:/ 'Country',20 cid.
+*ULINE: /(70).
+*WRITE: / sy-vline,(18) 'Customer No' CENTERED COLOR 1,
+*    20 sy-vline,(23) 'Name' CENTERED COLOR 1,
+*    45 sy-vline,(23) 'City' CENTERED COLOR 1,
+*    70 sy-vline.
+*ULINE: /(70).
+*PERFORM display_data.
+*
+*ULINE: /(70).
+*WRITE: /15 '***Total',25 num,50 'records***'.
+*ELSE.
+*WRITE:/ 'No data found'.
+*ENDIF.
+*
+*FORM read_data using cid.
+*    SELECT id name city country 
+*    INTO TABLE tab
+*    FROM scustom
+*    where country = cid.
+*endform.
+*FORM display_data.
+*  LOOP at tab.
+*    WRITE: / sy-vline,(18) tab-id ,
+*        20 sy-vline,(23) tab-name ,
+*    45 sy-vline,(23) tab-city,
+*    70 sy-vline.
+*  ENDLOOP.
+* ENDFORM.
+
+*******************<2>************************
+
+*PARAMETERS: carrid TYPE string.
+*WRITE: 'Japan Airlines'.
+*
+*WRITE: / '',sy-datum,
+*55 'Date :',sy-datum.
+*ULINE: /(70).
+*FORMAT COLOR 1.
+*WRITE: / sy-vline,(18) 'AirlineCode' LEFT-JUSTIFIED,
+*20 sy-vline,(23) 'FlightConNo' LEFT-JUSTIFIED,
+*45 sy-vline,(23) 'FlightDate' LEFT-JUSTIFIED,
+*70 sy-vline.
+*FORMAT COLOR OFF.
+*uline: /(70).
+*
+*DATA:BEGIN OF tab OCCURS 0,
+*  carrid LIKE scarr-carrid,
+*  connid LIKE sflight-connid,
+*  fldate LIKE sflight-fldate,
+*END OF tab.
+*
+*
+*PERFORM read_data USING carrid.
+*PERFORM display_data.
+*
+*
+*FORM read_data USING carrid.
+*  SELECT a~carrid b~connid b~fldate
+*    INTO TABLE tab
+*    FROM scarr as a INNER JOIN sflight as b
+*    on a~carrid = b~carrid
+*    WHERE a~carrid = carrid.
+*ENDFORM.
+*
+*FORM display_data.
+*  LOOP at tab.
+*    WRITE:/ sy-vline, tab-carrid COLOR 4,
+*    20 sy-vline,(23) tab-connid CENTERED,
+*    45 sy-vline,(23) tab-fldate CENTERED,
+*    70 sy-vline.
+*  ENDLOOP.
+*  ULINE: /(70).
+*  DATA num TYPE i.
+*  num = lines( tab ).
+*  IF sy-subrc <> 0.
+*    WRITE: / 'No data'.
+*  ELSE.
+*    WRITE: /20 '*** Total',num,'records ***'.
+*  ENDIF.
+*ENDFORM.
+
+****************<3>*****************
+PARAMETERS : CUSTNAME type String.
+
+data: BEGIN OF struck OCCURS 0,
+bookid like sbook-BOOKID,
+customid like sbook-customid,
+name type scustom-name,
+END OF struck.
+
+ data st TYPE string.
+ CONCATENATE CUSTNAME '%' into st.
+ write:/ st.
+
+
+PERFORM read_data USING CUSTNAME.
+PERFORM  display_data.
+
+
+FORM read_data USING CUSTNAME .
+ 
+  select sbook~BOOKID customid name into TABLE struck 
+    from sbook join scustom on sbook~CUSTOMID = scustom~ID where name like st.  
+ENDFORM.
+
+
+FORM display_data.
+  write:/'Date : ', sy-datum , 20 'Customer Booking',50 'Time : ',sy-uzeit.
+   ULINE:/(80).
+   format color 1.
+WRITE: / sy-vline,'AirlineCode',20 sy-vline,30 'FlightConNo',45 sy-vline,50 'FlightDate',80 sy-vline.
+format color off.
+ULINE:/(80).
+
+ IF sy-subrc <> 0.
+    WRITE: / 'No data'.
+ ELSE.
+    LOOP AT struck.
+    WRITE: / sy-vline,struck-bookid,20 sy-vline,30 struck-customid,45 sy-vline,50 struck-name,80 sy-vline.
+    ENDLOOP.
+    ULINE:/(80).
+ ENDIF.
+  
+ENDFORM.
